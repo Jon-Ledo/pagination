@@ -8,8 +8,10 @@ const title = document.querySelector('.section-title h1')
 
 const init = async() => {
   const followers = await fetchFollowers()
-  displayFollowers(followers)
+  displayFollowers(paginate(followers)[0]) // load in 12 users at start after defining paginate function
   title.textContent = 'pagination'
+  const pages = paginate(followers)
+  console.log(pages);
 }
 
 window.addEventListener('load', init)
